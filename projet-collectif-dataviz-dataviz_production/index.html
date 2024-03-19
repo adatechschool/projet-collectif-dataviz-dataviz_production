@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ａｒｉｇａｔｏ　ｍｅｔｅｏ</title>
+        <style>
+            #characters {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .character {
+                border: 1px solid rgb(17, 14, 14);
+                padding: 20px
+            }
+
+            .character img {
+                max-height: 180px;
+            }
+        </style>
+    </head>
+        <body>
+            <div id="characters"></div>
+            <script>
+            fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/tokyo?unitGroup=us&key=YPXYAT45SZAAZMPLTE96SZ99T&contentType=json", {
+                "method": "GET",
+                "headers": {
+            }
+            })
+        .then(response => {
+            console.log(response);
+         })
+        .catch(err => {
+             console.error(err);
+        });
+            </script>
+        </body>
+</html>
+
+viApi.js
+async function afficherPocky() {
+        const response = await fetch ("URL");
+        const poky = await response.json();
+        console.log(poky);
+    }
+afficherPocky();
