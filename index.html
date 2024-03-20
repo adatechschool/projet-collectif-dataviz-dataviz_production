@@ -3,18 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arigato Météo</title>
+    <title>Arigato Weather</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Madimi+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <!--ajouter la navbar-->
-    <div></div>
-    <!--ajouter la liste des villes
-    Tokyo, Osaka, Yokohama, Nagoya, Sapporo, Kobe, Kyoto, Fukuoka-->
-    <div></div>
+    <nav>
+        <!--aria current permet d'indiquer que lien vers la même page, aria label indique que le lien permet de visiter la homepage-->
+        <a href="#" class="nav-icon" aria-label="homepage" aria-current="page">
+            <img src="ressources/sakura.png" alt="website icon" >
+            <span>Arigato Weather</span>
+        </a>
+
+        <div class="main-navlinks">
+            <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
+                <!--permet de tracer les 3 traits du hamburger-->
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="navlinks-container">
+                <a href="#" aria-current="page">Home</a>
+                <a href="#">Tokyo</a>
+                <a href="#">Osaka</a>
+                <a href="#">Yokohama</a>
+                <a href="#">Nagoya</a>
+                <a href="#">Sapporo</a>
+                <a href="#">Kobe</a>
+                <a href="#">Fukuoka</a>
+                <a href="#">Kyoto</a>
+            </div>
+        </div>
+        <!--va apparaître lorsque la taille de l'écran est réduit-->
+        <div class="nav-authentication">
+            <a href="#" class="sign-user" aria-label="Sign in page">
+                <img src="ressources/abstract-user.svg" alt="user-icon">
+            </a>
+            <div class="sign-buttons">
+                <button type="button">Sign In</button>
+                <button type="button">Sign Up</button>
+            </div>
+        </div>
+        
+    </nav>
+
+    </div>
     <!--ajouter la carte-->
-    <div></div>
     <div id="map"></div>
+    
     <script type="module" src="./main.js"></script>
 </body>
 </html>
