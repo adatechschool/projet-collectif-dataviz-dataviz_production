@@ -13,7 +13,7 @@ for (let i = 0; i < liste_Country.length; i++) {
   //console.log(liste_Country[i]);
   displayTown(liste_Country[i]);
 }
-
+//nv nknl
 async function displayTown(townName) {
   const res = await fetch(
     `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${townName}?unitGroup=metric&key=EMMSPMZNCSEFKYYZ3GZ8LYVBR&contentType=json`
