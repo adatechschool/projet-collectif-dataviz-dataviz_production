@@ -1,3 +1,5 @@
+const api_Keys = "EMMSPMZNCSEFKYYZ3GZ8LYVBR";
+
 const liste_Country = [
   "Tokyo",
   "Osaka",
@@ -12,11 +14,12 @@ const liste_Country = [
 for (let i = 0; i < liste_Country.length; i++) {
   //console.log(liste_Country[i]);
   displayTown(liste_Country[i]);
+  coordinate_Map(liste_Country[i]);
 }
-//nv nknl
+
 async function displayTown(townName) {
   const res = await fetch(
-    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${townName}?unitGroup=metric&key=EMMSPMZNCSEFKYYZ3GZ8LYVBR&contentType=json`
+    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${townName}?unitGroup=metric&key=${api_Keys}&contentType=json`
   );
   const city = await res.json();
   const town = city.address;
@@ -27,6 +30,10 @@ async function displayTown(townName) {
   const coucher_Soleil = city.days[0].sunset;
   const neige = city.days[0].snow;
   const rain = city.days[0].precip;
+  const latitude_Map = city.latitude;
+  const longitude_Map = city.longitude;
+
+  // console.log(city.latitude + " lol");
 
   console.log(town);
   console.log(descriptif);
@@ -36,4 +43,6 @@ async function displayTown(townName) {
   console.log(coucher_Soleil);
   console.log(neige);
   console.log(rain);
+  console.log("lat " + latitude_Map);
+  console.log("long " + longitude_Map);
 }
