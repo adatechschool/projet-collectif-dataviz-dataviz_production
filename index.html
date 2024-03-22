@@ -4,16 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arigato Weather</title>
-    <link rel="stylesheet" href="style.css">
+    
+    <!--lien pour les polices de caractère-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Madimi+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!--lien leaflet pour la carte-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!--ajouter la navbar-->
+    <header>
     <nav>
         <!--aria current permet d'indiquer que lien vers la même page, aria label indique que le lien permet de visiter la homepage-->
-        <a href="#" class="nav-icon" aria-label="homepage" aria-current="page">
+        <a href="index.html" class="nav-icon" aria-label="homepage" aria-current="page">
             <img src="ressources/sakura.png" alt="website icon" >
             <span>Arigato Weather</span>
         </a>
@@ -26,15 +33,15 @@
                 <span></span>
             </button>
             <div class="navlinks-container">
-                <a href="#" aria-current="page">Home</a>
-                <a href="#">Tokyo</a>
-                <a href="#">Osaka</a>
-                <a href="#">Yokohama</a>
-                <a href="#">Nagoya</a>
-                <a href="#">Sapporo</a>
-                <a href="#">Kobe</a>
-                <a href="#">Fukuoka</a>
-                <a href="#">Kyoto</a>
+                <a href="index.html" aria-current="page">Home</a>
+                <a href="Tokyo.html">Tokyo</a>
+                <a href="Osaka.html">Osaka</a>
+                <a href="Yokohama.html">Yokohama</a>
+                <a href="Nagoya.html">Nagoya</a>
+                <a href="Sapporo.html">Sapporo</a>
+                <!--<a href="Kobe.html">Kobe</a>-->
+                <a href="Fukuoka.html">Fukuoka</a>
+                <a href="Kyoto.html">Kyoto</a>
             </div>
         </div>
         <!--va apparaître lorsque la taille de l'écran est réduit-->
@@ -49,11 +56,18 @@
         </div>
         
     </nav>
-
-    </div>
+    </header>
+    <main id="map-container">
     <!--ajouter la carte-->
+    <!--<iframe width="500" height="300" src="https://api.maptiler.com/maps/d67c9eaf-910f-4569-b3ff-1d9506b2bf4e/?key=KOOTJYxtX4YyuMBFNP0s#4.2/38.06794/135.86734"></iframe>-->
     <div id="map"></div>
-    
+    </main>
+    <!--lien leaflet js pour la carte-->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
     <script type="module" src="./main.js"></script>
+    
 </body>
 </html>
