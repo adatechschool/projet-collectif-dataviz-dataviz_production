@@ -8,7 +8,7 @@
     <!--lien pour les polices de caractère-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Madimi+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
     <!--lien leaflet pour la carte-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
@@ -19,8 +19,10 @@
     <!--ajouter audio-->
     <!-- controls-->
     <audio
+      autoplay
       id="myAudio"
       src="ressources/Sakura Ikimono Gakari Lyrics Letra.mp3"
+      type="audio/mpeg"
     ></audio>
 
     <!--ajouter la navbar-->
@@ -40,23 +42,33 @@
             </button>
             <div class="navlinks-container">
                 <a href="index.html" aria-current="page">Home</a>
-                <a href="#" id="Tokyo">Tokyo</a>
-                <a href="#" id="Osaka">Osaka</a>
-                <a href="#" id="Yokohama">Yokohama</a>
-                <a href="#" id="Nagoya">Nagoya</a>
-                <a href="#"id="Sapporo">Sapporo</a>
-                <a href="#" id="Fukuoka">Fukuoka</a>
-                <a href="#" id="Kyoto">Kyoto</a>
+                <a href="#" id="Tokyo" onclick="openInfo()">Tokyo</a>
+                <a href="#" id="Osaka" onclick="openInfo()">Osaka</a>
+                <a href="#" id="Yokohama" onclick="openInfo()">Yokohama</a>
+                <a href="#" id="Nagoya" onclick="openInfo()">Nagoya</a>
+                <a href="#"id="Sapporo" onclick="openInfo()">Sapporo</a>
+                <a href="#" id="Fukuoka" onclick="openInfo()">Fukuoka</a>
+                <a href="#" id="Kyoto" onclick="openInfo()">Kyoto</a>
             </div>
         </div>
-        <div id="musicButtons">
+        <!--<div id="musicButtons">
             <button onclick="changeStates(0)" class="btn">Play</button>
             <button onclick="changeStates(1)" class="btn">Pause</button>
             <button onclick="changeStates(2)" class="btn active">Stop</button>
-          </div>  
+          </div>-->  
     </nav>
     <!--ajouter la carte-->
+    
     <div id="map"></div>
+    <div id="moreInfo" class= "complentary-info">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeInfo()">Close</a>
+        <div class="overlay-content">
+            <p>About</p>
+            <p>Services</p>
+            <p>Clients</p>
+            <p class="description"></p>
+        </div>
+    </div>
     <!--lien leaflet js pour la carte-->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="

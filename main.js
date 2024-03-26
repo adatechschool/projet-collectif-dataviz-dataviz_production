@@ -1,7 +1,7 @@
 /* integretaatio Audio*/
 //changer l'etat des boutons
 
-function changeStates(x) {
+/*function changeStates(x) {
   console.log("OKOKOKOKOKOK", x);
   let btns = document.querySelectorAll(".btn");
   console.log("BTN", btns);
@@ -21,7 +21,9 @@ function changeStates(x) {
     audio.pause();
     audio.currentTime = 0; //mets pause et remets la musique à 0
   }
-}
+}*/
+
+
 
 /* intégration de la map*/
 var map = L.map('map').setView([37.9237, 137.245], 5);
@@ -461,4 +463,18 @@ execute();
 
 map.zoomControl.setPosition('bottomright')
 
+function openInfo() {
+  document.getElementById("moreInfo").style.width = "50%";
+}
 
+function closeInfo() {
+  document.getElementById("moreInfo").style.width = "0%";
+}
+
+function tokyoInfo() {
+  document.getElementsByClassName("description").innerHTML = "Hello"
+} 
+
+function changeInfo() {
+  document.getElementById("Tokyo").addEventListener("click", tokyoInfo);
+}
