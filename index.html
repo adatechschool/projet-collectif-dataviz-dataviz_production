@@ -16,12 +16,19 @@
      <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!--ajouter audio-->
+    <!-- controls-->
+    <audio
+      id="myAudio"
+      src="ressources/Sakura Ikimono Gakari Lyrics Letra.mp3"
+    ></audio>
+
     <!--ajouter la navbar-->
     <nav>
         <!--aria current permet d'indiquer que lien vers la même page, aria label indique que le lien permet de visiter la homepage-->
         <a href="index.html" class="nav-icon" aria-label="homepage" aria-current="page">
             <img src="ressources/sakura.png" alt="website icon" >
-            <span>Arigato Weather</span>
+            <span>ARIGATO WEATHER</span>
         </a>
 
         <div class="main-navlinks">
@@ -33,38 +40,29 @@
             </button>
             <div class="navlinks-container">
                 <a href="index.html" aria-current="page">Home</a>
-                <a href="Tokyo.html">Tokyo</a>
-                <a href="Osaka.html">Osaka</a>
-                <a href="Yokohama.html">Yokohama</a>
-                <a href="Nagoya.html">Nagoya</a>
-                <a href="Sapporo.html">Sapporo</a>
-                <!--<a href="Kobe.html">Kobe</a>-->
-                <a href="Fukuoka.html">Fukuoka</a>
-                <a href="Kyoto.html">Kyoto</a>
+                <a href="#" id="Tokyo">Tokyo</a>
+                <a href="#" id="Osaka">Osaka</a>
+                <a href="#" id="Yokohama">Yokohama</a>
+                <a href="#" id="Nagoya">Nagoya</a>
+                <a href="#"id="Sapporo">Sapporo</a>
+                <a href="#" id="Fukuoka">Fukuoka</a>
+                <a href="#" id="Kyoto">Kyoto</a>
             </div>
         </div>
-        <!--va apparaître lorsque la taille de l'écran est réduit-->
-        <!--<div class="nav-authentication">
-            <a href="#" class="sign-user" aria-label="Sign in page">
-                <img src="ressources/abstract-user.svg" alt="user-icon">
-            </a>
-            <div class="sign-buttons">
-                <button type="button">Sign In</button>
-                <button type="button">Sign Up</button>
-            </div>
-        </div>-->
-        
+        <div id="musicButtons">
+            <button onclick="changeStates(0)" class="btn">Play</button>
+            <button onclick="changeStates(1)" class="btn">Pause</button>
+            <button onclick="changeStates(2)" class="btn active">Stop</button>
+          </div>  
     </nav>
-    <!--<main id="map-container">-->
     <!--ajouter la carte-->
     <div id="map"></div>
-    <!--</main>-->
     <!--lien leaflet js pour la carte-->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>
 
-    <script type="module" src="./main.js"></script>
+    <script src="./main.js"></script>
     
 </body>
 </html>
