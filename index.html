@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arigato Weather</title>
-    
+    <title>Arigato Météo</title>
     <!--lien pour les polices de caractère-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,13 +21,15 @@
       id="myAudio"
       src="ressources/Sakura Ikimono Gakari Lyrics Letra.mp3"
     ></audio>
+    <audio autoplay id="myAudio" src="ressources/Sakura Ikimono Gakari Lyrics Letra.mp3" type="audio/mpeg">
+    </audio>
 
     <!--ajouter la navbar-->
     <nav>
         <!--aria current permet d'indiquer que lien vers la même page, aria label indique que le lien permet de visiter la homepage-->
         <a href="index.html" class="nav-icon" aria-label="homepage" aria-current="page">
             <img src="ressources/sakura.png" alt="website icon" >
-            <span>ARIGATO WEATHER</span>
+            <span>ARIGATÔ METEÔ</span>
         </a>
 
         <div class="main-navlinks">
@@ -40,23 +41,35 @@
             </button>
             <div class="navlinks-container">
                 <a href="index.html" aria-current="page">Home</a>
-                <a href="#" id="Tokyo">Tokyo</a>
-                <a href="#" id="Osaka">Osaka</a>
-                <a href="#" id="Yokohama">Yokohama</a>
-                <a href="#" id="Nagoya">Nagoya</a>
-                <a href="#"id="Sapporo">Sapporo</a>
-                <a href="#" id="Fukuoka">Fukuoka</a>
-                <a href="#" id="Kyoto">Kyoto</a>
+                <a href="#" id="Tokyo" onclick="tokyoInfo(); openInfo()">Tokyo</a>
+                <a href="#" id="Osaka" onclick="osakaInfo(); openInfo()">Osaka</a>
+                <a href="#" id="Yokohama" onclick="yokohamaInfo(); openInfo()">Yokohama</a>
+                <a href="#" id="Nagoya" onclick="nagoyaInfo(); openInfo()">Nagoya</a>
+                <a href="#"id="Sapporo" onclick="sapporoInfo(); openInfo()">Sapporo</a>
+                <a href="#" id="Fukuoka" onclick="fukuokaInfo(); openInfo()">Fukuoka</a>
+                <a href="#" id="Kyoto" onclick="kyotoInfo(); openInfo()">Kyoto</a>
+                <a href="#" id="Kobe" onclick="kobeInfo(); openInfo()">Kobe</a>
             </div>
         </div>
-        <div id="musicButtons">
-            <button onclick="changeStates(0)" class="btn">Play</button>
-            <button onclick="changeStates(1)" class="btn">Pause</button>
-            <button onclick="changeStates(2)" class="btn active">Stop</button>
           </div>  
+        <div id="musicButtons">
+            <div id="audio_control" onclick="playPause()">Pause</div>
+        </div>
     </nav>
     <!--ajouter la carte-->
+    
+
     <div id="map"></div>
+    <div id="moreInfo" class= "complentary-info">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeInfo()">Close</a>
+        <div class="overlay-content">
+            <div id="randomImage"></div>
+            <div id="precipitations">Precipitations</div>
+            <div id="sunPhases">Sun Phases</div>
+            <div id="moonPhases">Moon Phases</div>
+            
+        </div>
+    </div>
     <!--lien leaflet js pour la carte-->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
