@@ -1,15 +1,16 @@
 /* Audio Controls */
 // --- INITIAL STATE ---
 const music = document.getElementById("myAudio");
-let count = 1;
+let count = 1; //means en cours de lecture
+
 // --- CONTROL FUNCTION ---
 function playPause() {
-  if (count == 0) {
-    count = 1;
+  if (count == 1) {
+    count = 2;
     music.play();
-    document.getElementById("audio_control").innerHTML = "Pause";
-  } else if (count == 1) {
-    count = 0;
+    document.getElementById("audio_control").innerHTML = "Stop";
+  } else if (count == 2) { //means à l'arrêt
+    count = 1;
     music.pause();
     document.getElementById("audio_control").innerHTML = "Play";
   }
@@ -37,7 +38,6 @@ hamburgerToggler.addEventListener("click", toggleNav);
 // --- SLIDE BAR ANIMATION ---
 /* permet de gérer le slide de la barre latérale quand on clique sur le hamburger*/
 new ResizeObserver((entries) => {
-  //console.log(entries)
   if (entries[0].contentRect.width <= 1500) {
     /* slide progressif de la barre latérale*/
     navLinksContainer.style.transition = "transform 0.3s ease-out";
@@ -78,12 +78,12 @@ let kobeMarker = L.marker([35.6841, 139.809]).addTo(map);
 /* API Keys */
 // --- DEFINITION KEY API ---
 const apiKeys = {
-  //Naima: "EMMSPMZNCSEFKYYZ3GZ8LYVBR",
-  //Zoulfat: "RDLM9N3FLLQWX892VHLYS3P3G",
-  // Bis: "JNW3KLZHP2PP2YARHKYQ6LC28",
-  ter: "CRWMSSTYVAVHKZFE56763N2SG" 
-  //Mathilde: "YPXYAT45SZAAZMPLTE96SZ99T",
-  //Oumar: "G66JCW4PXP3JP9UGTKQ58U3TW"
+  Naima: "EMMSPMZNCSEFKYYZ3GZ8LYVBR",
+  Zoulfat: "RDLM9N3FLLQWX892VHLYS3P3G",
+  Bis: "JNW3KLZHP2PP2YARHKYQ6LC28",
+  ter: "CRWMSSTYVAVHKZFE56763N2SG", 
+  Mathilde: "YPXYAT45SZAAZMPLTE96SZ99T",
+  Oumar: "G66JCW4PXP3JP9UGTKQ58U3TW"
 };
 // --- RANDOM KEY FUNCTION ---
 function getRandomKey() {
@@ -107,9 +107,9 @@ async function town_Tokyo() {
   const tokyo = await res.json();
   console.log(tokyo);
   const resolvedAddressKey = tokyo.resolvedAddress;
-  const townKey = tokyo.address.charAt(0).toUpperCase() + tokyo.address.slice(1);
+  const townKey = tokyo.address.charAt(0).toUpperCase() + tokyo.address.slice(1, 5);
   const timeKey = tokyo.days[0].datetime;
-  const descriptifKey = tokyo.description;
+  const descriptifKey = tokyo.days[0].description;
   const temperatureKey = tokyo.days[0].temp;
   const uvIndexKey = tokyo.days[0].uvindex;
   const rainKey = tokyo.days[0].precip;
@@ -145,9 +145,9 @@ async function town_Osaka() {
   );
   const osaka = await res.json();
   const resolvedAddressKey = osaka.resolvedAddress;
-  const townKey = osaka.address.charAt(0).toUpperCase() + osaka.address.slice(1)
+  const townKey = osaka.address.charAt(0).toUpperCase() + osaka.address.slice(1, 5);
   const timeKey = osaka.days[0].datetime;
-  const descriptifKey = osaka.description;
+  const descriptifKey = osaka.days[0].description
   const temperatureKey = osaka.days[0].temp;
   const uvIndexKey = osaka.days[0].uvindex;
   const rainKey = osaka.days[0].precip;
@@ -161,8 +161,8 @@ async function town_Osaka() {
   let osakaWeather = [
     resolvedAddressKey,
     townKey,
-    descriptifKey,
     timeKey,
+    descriptifKey,
     temperatureKey,
     uvIndexKey,
     rainKey,
@@ -182,9 +182,9 @@ async function town_Yokohama() {
   );
   const yokohama = await res.json();
   const resolvedAddressKey = yokohama.resolvedAddress;
-  const townKey = yokohama.address.charAt(0).toUpperCase() + yokohama.address.slice(1)
+  const townKey = yokohama.address.charAt(0).toUpperCase() + yokohama.address.slice(1, 8);
   const timeKey = yokohama.days[0].datetime;
-  const descriptifKey = yokohama.description;
+  const descriptifKey = yokohama.days[0].description
   const temperatureKey = yokohama.days[0].temp;
   const uvIndexKey = yokohama.days[0].uvindex;
   const rainKey = yokohama.days[0].precip;
@@ -198,8 +198,8 @@ async function town_Yokohama() {
   let yokohamaWeather = [
     resolvedAddressKey,
     townKey,
-    descriptifKey,
     timeKey,
+    descriptifKey,
     temperatureKey,
     uvIndexKey,
     rainKey,
@@ -219,9 +219,9 @@ async function town_Nagoya() {
   );
   const nagoya = await res.json();
   const resolvedAddressKey = nagoya.resolvedAddress;
-  const townKey = nagoya.address.charAt(0).toUpperCase() + nagoya.address.slice(1)
+  const townKey = nagoya.address.charAt(0).toUpperCase() + nagoya.address.slice(1, 6);
   const timeKey = nagoya.days[0].datetime;
-  const descriptifKey = nagoya.description;
+  const descriptifKey = nagoya.days[0].description
   const temperatureKey = nagoya.days[0].temp;
   const uvIndexKey = nagoya.days[0].uvindex;
   const rainKey = nagoya.days[0].precip;
@@ -235,8 +235,8 @@ async function town_Nagoya() {
   let nagoyaWeather = [
     resolvedAddressKey,
     townKey,
-    descriptifKey,
     timeKey,
+    descriptifKey,
     temperatureKey,
     uvIndexKey,
     rainKey,
@@ -256,9 +256,9 @@ async function town_Sapporo() {
   );
   const sapporo = await res.json();
   const resolvedAddressKey = sapporo.resolvedAddress;
-  const townKey = sapporo.address.charAt(0).toUpperCase() + sapporo.address.slice(1)
+  const townKey = sapporo.address.charAt(0).toUpperCase() + sapporo.address.slice(1, 7);
   const timeKey = sapporo.days[0].datetime;
-  const descriptifKey = sapporo.description;
+  const descriptifKey = sapporo.days[0].description
   const temperatureKey = sapporo.days[0].temp;
   const uvIndexKey = sapporo.days[0].uvindex;
   const rainKey = sapporo.days[0].precip;
@@ -272,8 +272,8 @@ async function town_Sapporo() {
   let sapporoWeather = [
     resolvedAddressKey,
     townKey,
-    descriptifKey,
     timeKey,
+    descriptifKey,
     temperatureKey,
     uvIndexKey,
     rainKey,
@@ -293,9 +293,10 @@ async function town_Kyoto() {
   );
   const kyoto = await res.json()
   const resolvedAddressKey = kyoto.resolvedAddress;
-  const townKey = kyoto.address.charAt(0).toUpperCase() + kyoto.address.slice(1)
+  const townKey = kyoto.address.charAt(0).toUpperCase() + kyoto.address.slice(1, 5);
   const timeKey = kyoto.days[0].datetime;
-  const descriptifKey = kyoto.description;
+  const descriptifKey = kyoto.days[0].description
+  console.log(descriptifKey);
   const temperatureKey = kyoto.days[0].temp;
   const uvIndexKey = kyoto.days[0].uvindex;
   const rainKey = kyoto.days[0].precip;
@@ -309,8 +310,8 @@ async function town_Kyoto() {
   let kyotoWeather = [
     resolvedAddressKey,
     townKey,
-    descriptifKey,
     timeKey,
+    descriptifKey,
     temperatureKey,
     uvIndexKey,
     rainKey,
@@ -324,16 +325,16 @@ async function town_Kyoto() {
   return kyotoWeather;
 }
 // --- FUKUOKA ---
-let fukuokaWeather = [];
 async function town_Fukuoka() {
   const res = await fetch(
     `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Fukuoka,Japan/today?unitGroup=metric&key=${randomKey}&include=today&elements=longitude,latitude,datetime,description,temp,humidity,precip,snow,sunrise,sunset,moonrise,moonset,uvindex,windspeed,icon&contentType=json`
   );
   const fukuoka = await res.json();
   const resolvedAddressKey = fukuoka.resolvedAddress;
-  const townKey = fukuoka.address.charAt(0).toUpperCase() + fukuoka.address.slice(1)
+  const townKey = fukuoka.address.charAt(0).toUpperCase() + fukuoka.address.slice(1, 7);
   const timeKey = fukuoka.days[0].datetime;
-  const descriptifKey = fukuoka.description;
+  const descriptifKey = fukuoka.days[0].description;
+  console.log(descriptifKey);
   const temperatureKey = fukuoka.days[0].temp;
   const uvIndexKey = fukuoka.days[0].uvindex;
   const rainKey = fukuoka.days[0].precip;
@@ -347,8 +348,8 @@ async function town_Fukuoka() {
   let fukuokaWeather = [
     resolvedAddressKey,
     townKey,
-    descriptifKey,
     timeKey,
+    descriptifKey,
     temperatureKey,
     uvIndexKey,
     rainKey,
@@ -370,7 +371,8 @@ async function town_Kobe() {
   const resolvedAddressKey = kobe.resolvedAddress;
   const townKey = kobe.address.charAt(0).toUpperCase() + kobe.address.slice(1, 4);
   const timeKey = kobe.days[0].datetime;
-  const descriptifKey = kobe.description;
+  const descriptifKey = kobe.days[0].description;
+  console.log(descriptifKey);
   const temperatureKey = kobe.days[0].temp;
   const uvIndexKey = kobe.days[0].uvindex;
   const rainKey = kobe.days[0].precip;
@@ -380,11 +382,12 @@ async function town_Kobe() {
   const moonriseKey = kobe.days[0].moonrise;
   const moonsetKey = kobe.days[0].moonset;
   const iconKey = kobe.days[0].icon;
+
   let kobeWeather = [
     resolvedAddressKey,
     townKey,
-    descriptifKey,
     timeKey,
+    descriptifKey,
     temperatureKey,
     uvIndexKey,
     rainKey,
@@ -408,7 +411,7 @@ const execute = async () => {
                             ${changeIcon(t)}
                          </div>
                          <div class = "description">
-                            <p>${t[2]}</p>
+                            <p>${t[3]}</p>
                          </div>`, { className: 'cities' });
 
   let o = await town_Osaka();
@@ -420,7 +423,7 @@ const execute = async () => {
                             ${changeIcon(o)}
                          </div>
                          <div class = "description">
-                            <p>${o[2]}</p>
+                            <p>${o[3]}</p>
                          </div>`, { className: 'cities' });
 
   let y = await town_Yokohama();
@@ -432,7 +435,7 @@ const execute = async () => {
                               ${changeIcon(y)}
                             </div>
                             <div class = "description">
-                              <p>${y[2]}</p>
+                              <p>${y[3]}</p>
                             </div>`, { className: 'cities' });
 
   let n = await town_Nagoya();
@@ -444,7 +447,7 @@ const execute = async () => {
                             ${changeIcon(n)}
                           </div>
                           <div class = "description">
-                            <p>${n[2]}</p>
+                            <p>${n[3]}</p>
                           </div>`, { className: 'cities' });
 
   let s = await town_Sapporo();
@@ -456,7 +459,7 @@ const execute = async () => {
                               ${changeIcon(s)}
                             </div>
                             <div class = "description">
-                              <p>${s[2]}</p>
+                              <p>${s[3]}</p>
                             </div>`, { className: 'cities' });
 
   let ky = await town_Kyoto();
@@ -468,7 +471,7 @@ const execute = async () => {
                             ${changeIcon(ky)}
                           </div>
                           <div class = "description">
-                            <p>${ky[2]}</p>
+                            <p>${ky[3]}</p>
                           </div>`, { className: 'cities' });
 
   let f = await town_Fukuoka();
@@ -479,7 +482,7 @@ const execute = async () => {
                                 ${changeIcon(f)}
                                 </div>
                               <div class = "description">
-                                <p>${f[2]}</p>
+                                <p>${f[3]}</p>
                               </div>`, { className: 'cities' });
   let ko = await town_Kobe();
   kobeMarker.bindPopup(`<div class = "weatherbox">
@@ -489,7 +492,7 @@ const execute = async () => {
                           ${changeIcon(ko)}
                           </div>
                           <div class = "description">
-                          <p>${ko[2]}</p>
+                          <p>${ko[3]}</p>
                           </div>`, { className: 'cities' });
   let randomPhotoUrl = await callUnsplash();
 
@@ -524,56 +527,56 @@ function closeInfo() {
 function tokyoInfo() {
   execute();
   document.getElementById("randomImage").innerHTML = `<img class = "cityImages" src=${data.randomPhotoUrl}>`
-  document.getElementById("precipitations").innerHTML = "Rain "+ data.t[6] + " Snow "+ data.t[7];
+  document.getElementById("precipitations").innerHTML = "Rain " + data.t[6] + " Snow " + data.t[7];
   document.getElementById("sunPhases").innerHTML = "Sunrise " + data.t[8] + " Sunset " + data.t[9];
   document.getElementById("moonPhases").innerHTML = "Moonrise " + data.t[10] + " Moonset " + data.t[11];
 };
 function osakaInfo() {
   execute()
   document.getElementById("randomImage").innerHTML = `<img class = "cityImages" src=${data.randomPhotoUrl}>`
-  document.getElementById("precipitations").innerHTML = "Rain "+ data.o[6] + " Snow "+ data.o[7];
+  document.getElementById("precipitations").innerHTML = "Rain " + data.o[6] + " Snow " + data.o[7];
   document.getElementById("sunPhases").innerHTML = "Sunrise " + data.o[8] + " Sunset " + data.t[9];
   document.getElementById("moonPhases").innerHTML = "Moonrise " + data.o[10] + " Moonset " + data.o[11];
 };
 function yokohamaInfo() {
   execute()
   document.getElementById("randomImage").innerHTML = `<img class = "cityImages" src=${data.randomPhotoUrl}>`
-  document.getElementById("precipitations").innerHTML = "Rain "+ data.y[6] + " Snow "+ data.y[7];
+  document.getElementById("precipitations").innerHTML = "Rain " + data.y[6] + " Snow " + data.y[7];
   document.getElementById("sunPhases").innerHTML = "Sunrise " + data.y[8] + " Sunset " + data.y[9];
   document.getElementById("moonPhases").innerHTML = "Moonrise " + data.y[10] + " Moonset " + data.y[11];
 };
 function nagoyaInfo() {
   execute()
   document.getElementById("randomImage").innerHTML = `<img class = "cityImages" src=${data.randomPhotoUrl}>`
-  document.getElementById("precipitations").innerHTML = "Rain "+ data.n[6] + " Snow "+ data.n[7];
-  document.getElementById("sunPhases").innerHTML =  " Sunrise " + data.n[8] + " Sunset " + data.n[9];
+  document.getElementById("precipitations").innerHTML = "Rain " + data.n[6] + " Snow " + data.n[7];
+  document.getElementById("sunPhases").innerHTML = " Sunrise " + data.n[8] + " Sunset " + data.n[9];
   document.getElementById("moonPhases").innerHTML = " Moonrise " + data.n[10] + " Moonset " + data.n[11];
 };
 function sapporoInfo() {
   execute()
   document.getElementById("randomImage").innerHTML = `<img class = "cityImages" src=${data.randomPhotoUrl}>`
-  document.getElementById("precipitations").innerHTML = "Rain "+ data.s[6] + " Snow "+ data.s[7];
+  document.getElementById("precipitations").innerHTML = "Rain " + data.s[6] + " Snow " + data.s[7];
   document.getElementById("sunPhases").innerHTML = " Sunrise " + data.s[8] + " Sunset " + data.s[9];
   document.getElementById("moonPhases").innerHTML = " Moonrise " + data.s[10] + " Moonset " + data.s[11];
 };
 function fukuokaInfo() {
   execute()
   document.getElementById("randomImage").innerHTML = `<img class = "cityImages" src=${data.randomPhotoUrl}>`
-  document.getElementById("precipitations").innerHTML = "Rain "+ data.f[6] + " Snow "+ data.f[7];
+  document.getElementById("precipitations").innerHTML = "Rain " + data.f[6] + " Snow " + data.f[7];
   document.getElementById("sunPhases").innerHTML = "Sunrise " + data.f[8] + " Sunset " + data.f[9];
   document.getElementById("moonPhases").innerHTML = "Moonrise " + data.f[10] + " Moonset " + data.f[11];
 };
 function kyotoInfo() {
   execute()
   document.getElementById("randomImage").innerHTML = `<img class = "cityImages" src=${data.randomPhotoUrl}>`
-  document.getElementById("precipitations").innerHTML = "Rain "+ data.ky[6] + " Snow "+ data.ky[7];
+  document.getElementById("precipitations").innerHTML = "Rain " + data.ky[6] + " Snow " + data.ky[7];
   document.getElementById("sunPhases").innerHTML = "Sunrise " + data.ky[8] + " Sunset " + data.ky[9];
   document.getElementById("moonPhases").innerHTML = "Moonrise " + data.ky[10] + " Moonset " + data.ky[11];
 };
 function kobeInfo() {
   execute()
   document.getElementById("randomImage").innerHTML = `<img class = "cityImages" src=${data.randomPhotoUrl}>`
-  document.getElementById("precipitations").innerHTML = "Rain "+ data.ko[6] + " Snow "+ data.ko[7];
+  document.getElementById("precipitations").innerHTML = "Rain " + data.ko[6] + " Snow " + data.ko[7];
   document.getElementById("sunPhases").innerHTML = "Sunrise " + data.ko[8] + " Sunset " + data.ko[9];
   document.getElementById("moonPhases").innerHTML = "Moonrise " + data.ko[10] + " Moonset " + data.ko[11];
 };

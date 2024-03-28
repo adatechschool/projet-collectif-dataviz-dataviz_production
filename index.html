@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arigato Météo</title>
+    <title>ARIGATŌ METEŌ</title>
     <!--lien pour les polices de caractère-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,12 +16,7 @@
 </head>
 <body>
     <!--ajouter audio-->
-    <!-- controls-->
-    <audio
-      id="myAudio"
-      src="ressources/Sakura Ikimono Gakari Lyrics Letra.mp3"
-    ></audio>
-    <audio autoplay id="myAudio" src="ressources/Sakura Ikimono Gakari Lyrics Letra.mp3" type="audio/mpeg">
+    <audio id="myAudio" src="ressources\Sakura Ikimono Gakari Lyrics Letra.mp3" type="audio/mpeg">
     </audio>
 
     <!--ajouter la navbar-->
@@ -29,7 +24,7 @@
         <!--aria current permet d'indiquer que lien vers la même page, aria label indique que le lien permet de visiter la homepage-->
         <a href="index.html" class="nav-icon" aria-label="homepage" aria-current="page">
             <img src="ressources/sakura.png" alt="website icon" >
-            <span>ARIGATÔ METEÔ</span>
+            <span>ARIGATŌ METEŌ</span>
         </a>
 
         <div class="main-navlinks">
@@ -45,15 +40,16 @@
                 <a href="#" id="Osaka" onclick="osakaInfo(); openInfo()">Osaka</a>
                 <a href="#" id="Yokohama" onclick="yokohamaInfo(); openInfo()">Yokohama</a>
                 <a href="#" id="Nagoya" onclick="nagoyaInfo(); openInfo()">Nagoya</a>
-                <a href="#"id="Sapporo" onclick="sapporoInfo(); openInfo()">Sapporo</a>
+                <a href="#" id="Sapporo" onclick="sapporoInfo(); openInfo()">Sapporo</a>
                 <a href="#" id="Fukuoka" onclick="fukuokaInfo(); openInfo()">Fukuoka</a>
                 <a href="#" id="Kyoto" onclick="kyotoInfo(); openInfo()">Kyoto</a>
                 <a href="#" id="Kobe" onclick="kobeInfo(); openInfo()">Kobe</a>
             </div>
         </div>
           </div>  
+          <!-- contrôle audio-->
         <div id="musicButtons">
-            <div id="audio_control" onclick="playPause()">Pause</div>
+            <div id="audio_control" onclick="playPause()">Play</div>
         </div>
     </nav>
     <!--ajouter la carte-->
@@ -67,7 +63,7 @@
             <div id="precipitations">Precipitations</div>
             <div id="sunPhases">Sun Phases</div>
             <div id="moonPhases">Moon Phases</div>
-            
+
         </div>
     </div>
     <!--lien leaflet js pour la carte-->
@@ -75,7 +71,7 @@
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>
 
-    <script src="./main.js"></script>
+    <script src="main.js"></script>
     
 </body>
 </html>
