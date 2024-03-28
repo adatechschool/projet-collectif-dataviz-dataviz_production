@@ -1,0 +1,434 @@
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Madimi One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    background: rgba(240, 216, 186, 0.049);
+    /* rajoute un petite bordure à l'intérieur en bas de la navbar sans ajouter d'élément*/
+    box-shadow: inset 0px -1px 0px #a0c6ed;
+    z-index: 2;
+}
+
+.nav-icon {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-right: 50px;
+}
+
+.nav-icon span {
+    font-family: "Madimi One", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 42px;
+    margin-left: 10px;
+    color: #333;
+    padding: 15px
+}
+
+.nav-icon img {
+    width: 40px;
+    transform: rotate(-1deg) translateX(21px);
+    /* rajout naima*/
+    transition: 1.5s;
+}
+
+/* rajout naima -- animation icon*/
+.nav-icon img:hover {
+    scale: 1;
+}
+
+.hamburger {
+    display: none;
+}
+
+.navlinks-container a {
+    margin: 0 10px;
+    font-size: 25px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #414141;
+    /* pour faire un effet de soulignement sous les liens*/
+    /*display: inline-block;*/
+    position: relative;
+}
+
+.navlinks-container a::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    width: 100%;
+    height: 2px;
+    /*les traits qui souligne les liens ne sont pas visibles au début*/
+    transform: scaleX(0);
+    transform-origin: left;
+    background: #333;
+    transition: transform 0.3s ease-out;
+}
+
+/* ce qui arrive quand on survole le lien*/
+.navlinks-container a:hover::after {
+    transform: scaleX(1);
+}
+
+@media (max-width: 1500px) {
+    nav {
+        padding: 15px 20px;
+        position: relative;
+        background: rgba(244, 216, 181, 0.798);
+    }
+
+    .nav-icon {
+        order: 2;
+        margin: 0 auto;
+    }
+
+    .nav-icon span {
+        font-size: 33px;
+    }
+
+    .main-navlinks {
+        order: 1;
+        width: auto;
+
+    }
+
+    .hamburger {
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        border: none;
+        display: flex;
+        align-items: center;
+        position: relative;
+        background: rgba(244, 216, 181, 0.798);
+    }
+
+    /* les 3 barres de l'hambureger */
+    .hamburger span {
+        display: block;
+        width: 90%;
+        height: 4px;
+        background: #333;
+        position: absolute;
+        pointer-events: none;
+        transition: opacity 0.3s 0.15s ease-out;
+    }
+
+    /* animation des barres du haut et du bas, opacity ne va donc agir que sur le barre du milieu */
+    .hamburger span:nth-child(1),
+    .hamburger span:nth-child(3) {
+        transition: transform 0.3s ease-out;
+    }
+
+    /* barre du haut de l'hamburger */
+    .hamburger span:nth-child(1) {
+        transform: translateY(7px);
+    }
+
+    /*barre du bas de l'hamburger */
+    .hamburger span:nth-child(3) {
+        transform: translateY(-7px);
+    }
+
+    /* Rotation des barres*/
+    .hamburger.open span:nth-child(1) {
+        transform: translate(0) rotate(135deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+        opacity: 0;
+        transition: opacity 0s ease-out;
+    }
+
+    .hamburger.open span:nth-child(3) {
+        transform: translate(0) rotate(-135deg);
+    }
+
+    .navlinks-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        height: 100vh;
+        padding: 15px 50px 15px 20px;
+        border-right: 1px solid #b6e2ee;
+        transform: translate(-100%);
+        background: rgba(240, 216, 186, 0.656);
+    }
+
+    .open {
+        transform: translate(0%);
+    }
+
+    .navlinks-container a {
+        font-size: 20px;
+        margin: 10px 0;
+    }
+
+    #musicButtons {
+        order: 3;
+        margin-left: 0;
+    }
+
+}
+
+/* On réduit la taille de l'icon pour les petits écrans) */
+@media (max-width: 500px) {
+    .nav-icon img {
+        width: 30px;
+    }
+
+    .nav-icon span {
+        font-size: 20px;
+    }
+}
+
+/* intégration de la map */
+#map {
+    height: 100vh;
+    width: auto;
+    border: 1px solid #c5c5c6;
+    z-index: 1;
+}
+
+/* style à l'intérieur de la popup*/
+.cities {
+    font-family: "Madimi One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.weatherbox img {
+    width: 170px;
+    height: 170px;
+    /*transition: 1s ease-in-out 0.3s;*/
+    transition: .5s all ease-in-out;
+}
+
+.weatherbox img:hover {
+    transform: scale(1.25);
+    /*width: 200px;
+    height: 200px;*/
+}
+
+.weatherbox {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.ville {
+    font-size: 35px;
+    text-align: center;
+}
+
+.description {
+    font-size: 18px;
+    align-content: center;
+}
+
+.complentary-info {
+    position: fixed;
+    top: 150px;
+    left: 30%;
+    z-index: 2;
+    background: #0da8f0b6;
+    height: 100vh;
+    width: 0;
+    font-family: "Madimi One", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    color: #c5c5c6;
+    overflow-x: hidden;
+    transition: 0.5s;
+
+}
+
+/* à changer en fonction de ce que l'on veut ajouter comme info*/
+
+.overlay-content {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.complentary-info div {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #333;
+    display: block;
+    transition: 0.3s
+}
+
+.complentary-info .closebtn:hover,
+.complentary-info .closebtn:focus {
+    color: #f1f1f1;
+}
+
+.complentary-info .closebtn {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    font-size: 25px;
+    color: #c5c5c6;
+}
+
+@media screen and (max-height: 450px) {
+    .complentary-info div {
+        font-size: 15px
+    }
+
+    .complentary-info .closebtn {
+        font-size: 15px;
+        top: 15px;
+        right: 35px;
+    }
+}
+
+.detailedInfo {
+    background-color: #414141;
+    min-height: 10px;
+}
+
+.cityImages {
+    height: 250px;
+    width: 250px;
+    border-radius: 70px;
+    box-shadow: 20px -20px 7px 0px rgba(143, 64, 248, .5), 20px 20px 7px 0px rgba(255, 39, 208, 0.5);
+}
+
+/*-- boutons contrôle musique*/
+#audio_control {
+    border: 0;
+    background: transparent;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    padding: 15px 15px;
+    border-radius: 50px;
+    /*arrondi du musicButtons*/
+    cursor: pointer;
+    font-size: 1.3em;
+    font-family: "Madimi One", sans-serif;
+    text-transform: uppercase;
+    box-shadow: 0px 0px 7px 0px rgba(143, 64, 248, .5), 0px 0px 7px 0px rgba(39, 200, 255, .5);
+    transition: all .3s;
+}
+
+#audio_control::after {
+    content: "";
+    /*créer l'élément*/
+    width: 250px;
+    height: 200px;
+    background: linear-gradient(225deg, #35e8f2 0%, #f4a4e0 50%, #c990f4 100%);
+    position: absolute;
+    top: -27px;
+    left: -78px;
+    z-index: -1;
+    transition: all .2s;
+}
+
+#audio_control:hover::after {
+    transform: rotate(360deg);
+}
+
+#audio_control:hover {
+    transform: translate(0, -1px);
+    box-shadow: 3px -3px 20px 3px rgba(146, 78, 236, 0.656), -3px 3px 20px 3px rgba(84, 212, 255, 0.741);
+}
+
+/* .complentary-info {
+    position: fixed;
+    top: 150px;
+    left: 30%;
+    z-index: 2;
+    background: #0da8f0b6;
+    height: 100vh;
+    width: 0;
+    font-family: "Madimi One", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    color: #c5c5c6;
+    overflow-x: hidden;
+    transition: 0.5s;
+
+}
+
+à changer en fonction de ce que l'on veut ajouter comme info*/
+.
+/*overlay-content {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.complentary-info div {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #333;
+    display: block;
+    transition: 0.3s
+}
+
+.complentary-info .closebtn:hover,
+.complentary-info .closebtn:focus {
+    color: #f1f1f1;
+}
+
+.complentary-info .closebtn {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    font-size: 25px;
+    color: #c5c5c6;
+}
+
+@media screen and (max-height: 450px) {
+    .complentary-info div {
+        font-size: 15px
+    }
+
+    .complentary-info .closebtn {
+        font-size: 15px;
+        top: 15px;
+        right: 35px;
+    }
+}
+
+.detailedInfo {
+    background-color: #414141;
+    min-height: 10px;
+}
+
+.cityImages {
+    height: 200px;
+    width: 200px;
+}*/

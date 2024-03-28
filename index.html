@@ -3,18 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arigato Météo</title>
-    <link rel="stylesheet" href="style.css">
+    <title>ARIGATŌ METEŌ</title>
+    <!--lien pour les polices de caractère-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Madimi+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!--lien leaflet pour la carte-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!--ajouter audio-->
+    <!-- controls-->
+    <audio
+      id="myAudio"
+      src="ressources/sakuraCut.mp3"
+    ></audio>
+    <audio id="myAudio" src="ressources/sakuraCut.mp3" type="audio/mpeg">
+    </audio>
+
     <!--ajouter la navbar-->
-    <div></div>
-    <!--ajouter la liste des villes
-    Tokyo, Osaka, Yokohama, Nagoya, Sapporo, Kobe, Kyoto, Fukuoka-->
-    <div></div>
+    <nav>
+        <!--aria current permet d'indiquer que lien vers la même page, aria label indique que le lien permet de visiter la homepage-->
+        <a href="index.html" class="nav-icon" aria-label="homepage" aria-current="page">
+            <img src="ressources/sakura.png" alt="website icon" >
+            <span>ARIGATŌ METEŌ</span>
+        </a>
+
+        <div class="main-navlinks">
+            <button class="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
+                <!--permet de tracer les 3 traits du hamburger-->
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="navlinks-container">
+                <a href="index.html" aria-current="page">Home</a>
+                <a href="#" id="Tokyo" onclick="tokyoInfo(); openInfo()">Tokyo</a>
+                <a href="#" id="Osaka" onclick="osakaInfo(); openInfo()">Osaka</a>
+                <a href="#" id="Yokohama" onclick="yokohamaInfo(); openInfo()">Yokohama</a>
+                <a href="#" id="Nagoya" onclick="nagoyaInfo(); openInfo()">Nagoya</a>
+                <a href="#" id="Sapporo" onclick="sapporoInfo(); openInfo()">Sapporo</a>
+                <a href="#" id="Fukuoka" onclick="fukuokaInfo(); openInfo()">Fukuoka</a>
+                <a href="#" id="Kyoto" onclick="kyotoInfo(); openInfo()">Kyoto</a>
+                <a href="#" id="Kobe" onclick="kobeInfo(); openInfo()">Kobe</a>
+            </div>
+        </div>
+          </div>  
+        <div id="musicButtons">
+            <div id="audio_control" onclick="playPause()">Play</div>
+        </div>
+    </nav>
     <!--ajouter la carte-->
-    <div></div>
+    
+
     <div id="map"></div>
-    <script type="module" src="./main.js"></script>
+    <div id="moreInfo" class= "complentary-info">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeInfo()">Close</a>
+        <div class="overlay-content">
+            <div id="randomImage"></div>
+            <div id="precipitations">Precipitations</div>
+            <div id="sunPhases">Sun Phases</div>
+            <div id="moonPhases">Moon Phases</div>
+            
+        </div>
+    </div>
+    <!--lien leaflet js pour la carte-->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
+    <script src="main.js"></script>
+    
 </body>
 </html>
