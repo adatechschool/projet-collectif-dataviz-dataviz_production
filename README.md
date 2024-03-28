@@ -1,12 +1,21 @@
-Objectifs du projet: Consommation, transformation et exploitation des données (API météo)
+Objectifs du projet Dataviz: Consommation, transformation et exploitation des données (API météo)
 
-Création HTML, CSS, JS
+Langages de programmation: HTML, CSS, JS
 
-Choix du titre, détails des fonctionnalités :
- - API météo : https://www.visualcrossing.com/weather-api
- - Map : https://www.mapbox.com/mapbox-gljs
- - Villes japonaises : Tokyo, Osaka, Yokohama, Nagoya, Sapporo, Kobe, Kyoto, Fukuoka
- - Pins des villes sur la map
- - Navbar + listes des villes
+Titre: ARIGATÔ METEÔ
 
-Git add, commit, push --- en fin de journée  Merge en collectif 
+Projet: Visualiser la météo de certaines villes du Japon sur une carte.
+
+Villes: Tokyo, Osaka, Yokohama, Nagoya, Sapporo, Kobe, Kyoto, Fukuoka
+
+API utilisées:
+ - API Météo: Visual Crossing (https://www.visualcrossing.com/weather-api)
+ - API Map: Leaflet (https://leafletjs.com/) + Stadia Stamen (https://leaflet-extras.github.io/leaflet-providers/preview/)
+ - API Photo: Unsplash (https://unsplash.com/developers)
+
+Fonctionnalités: 
+ - Marqueurs villes placés sur la carte en fonctions des coordonnées récoltées
+ - Popup affichant température, descriptif et icône en fonction des données météorologiques
+ - Encart représentant informations complémentaires (précipitations, lever et coucher du soleil et de la lune) et une photo d'une ville japonaise de manière aléatoire.
+ - Animations des liens cliquables
+ - Musique de fond avec bouton play/pause
